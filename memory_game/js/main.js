@@ -2,19 +2,26 @@
 
 const cards=["queen","queen","king","king"];
 let cardsInPlay=[]; 
-let cardOne = cards[0];
-cardsInPlay.push('cardOne');
-console.log("user flipped queen"); 
-let CardTwo = cards[2];
-cardsInPlay.push('CardTwo');
-console.log("user flipped King"); 
 
-if (cardsInPlay.length === 2)
-{
-	if (cardsInPlay[0] === cardsInPlay[1])
-	alert ("you have found a match ! ");
+function cheackForMatch () { 
+
+if (cardsInPlay[0] === cardsInPlay[1])
+	console.log ("you have found a match ! ");
 	else
-		alert ("Sorry try agine ! ");
+	console.log ("Sorry try again ! ");
+
+
+}
+function flipCard (cardId) { 
+
+let cardOne = cards[cardId];
+cardsInPlay.push(cardId);
+console.log("user flipped " + cards[cardId]); 
+
 }
 
 
+flipCard(2)
+flipCard(0)
+
+cheackForMatch(cardsInPlay)
