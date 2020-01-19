@@ -1,26 +1,44 @@
 
 
+
 const cards=[
 {
 	rank:'queen',
 	suti: 'hearts',
-	cardImage: "image/queen-of-hearts.png"
+	cardImage: "images/queen-of-hearts.png"
 },
 {
 	rank:'queen',
 	suti: 'diamonds',
-	cardImage: "image/queen-of-diamonds.png"
+	cardImage: "images/queen-of-diamonds.png"
 },
 {
 	rank:'king',
 	suti: 'hearts',
-	cardImage: "image/king-of-hearts.png"
+	cardImage: "images/king-of-hearts.png"
 },
 {
 	rank:'king',
 	suti: 'diamonds',
-	cardImage: "image/king-of-diamonds.png"
+	cardImage: "images/king-of-diamonds.png"
 }, ];
+
+
+
+
+function createBoard () {
+
+	for ( let i=0; i< cards.length; i++)
+	{
+let cardElement = document.createElement('img');
+cardElement.setAttribute('src','images/back.png');
+cardElement.setAttribute('data-id',i);
+cardElement.addEventListener('click',flipCard());
+document.getElementById('game-board').appendChild(cardElement); 
+	}
+}
+
+
  cardsInPlay=[]; 
 function cheackForMatch () { 
 
@@ -31,16 +49,14 @@ if (cardsInPlay[0] === cardsInPlay[1])
 
 
 }
-function flipCard (cardId) { 
+function flipCard () { 
 
-
+cardId=this.getAttribute('data-id');
+this.setAttribute('src',cards[cardId].cardImage);
+this.src=cards[cardId].cardImage;
 cardsInPlay.push(cards[cardId]);
-console.log("user flipped " + cards[cardId].rank +"\n"+ cards[cardId].cardImage +"\n"+ cards[cardId].suti); 
+console.log(cards[cardId].cardImage);
 
 }
 
-
-flipCard(0)
-flipCard(2)
-
-cheackForMatch(cardsInPlay)
+createBoard();
